@@ -1,1 +1,36 @@
-<p>por-region works!</p>
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h3>Buscar por Region</h3>
+    <h2>Region activa: <small>{{regionActiva | titlecase}}</small></h2>
+    <hr/>
+    
+    <h5>Seleccione la región</h5>
+    
+    <div class="row">
+        <div class="col">
+            
+            <button *ngFor="let region of regiones" 
+                    [class]="(region===regionActiva) ? 'btn btn-primary' : 'btn btn-outline-primary' "
+                    (click)="activaRegion(region)">
+                {{region | titlecase}}
+            </button>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+
+<div *ngIf="paises.length>0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
+
+
+
+
+<!-- Formas de hacer los del coloreado de los botones. No son la mas eficientes pero sirven -->
+<!-- [class.btn-primary]="region===regionActiva" -->
+<!-- [ngClass]="{
+    'btn-primary': regionActiva === region,
+    'btn-outline-primary': regionActiva !== region
+}"    -->
